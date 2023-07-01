@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ClickManager : MonoBehaviour
 {
     //カウント用の変数を用意
-    private int count = 0;//int型の変数　初期値＝0
+    public int count = 0;//int型の変数　初期値＝0
 
     //テキスト型の変数を用意
     public Text countText;

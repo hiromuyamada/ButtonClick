@@ -13,7 +13,7 @@ public class ClickManager : MonoBehaviour
     public Text countText;
 
     //float型の変数を用意する
-    private float time = 10.0f;//初期値10
+    private float time = ButtonManager.gameTime;//初期値10
 
     //Text型の変数を用意する
     public Text timeText;

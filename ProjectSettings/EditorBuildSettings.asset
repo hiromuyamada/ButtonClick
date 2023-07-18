@@ -6,10 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/FreeMainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: 05bb0aa2cc268413db55c744bc531283
+  - enabled: 1
+    path: Assets/Scenes/VsSelectScene.unity
+    guid: ed7949df15746f9419891c5894ca8194
+  - enabled: 1
+    path: Assets/Scenes/FreeSelectScene.unity
+    guid: 66f64f1bb8403ab40862ae348f0aee7e
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b1ef180a35654844ca4d072e0449b383, type: 2}

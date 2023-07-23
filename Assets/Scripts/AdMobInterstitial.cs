@@ -144,7 +144,7 @@ public class AdMobInterstitial : MonoBehaviour
         LoadInterstitialAd();
 
         // ƒV[ƒ“ˆÚ“®
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("FreeSelectScene");
 
     }
 

@@ -23,7 +23,11 @@ public class ClickManager : MonoBehaviour
 
     //bool型の変数を用意する
     private bool gameEnd = false;
-    
+
+    public GameObject canvas;
+    public GameObject slimePrefab;
+    float posX;
+    float posY;
 
     //変数を1増やす関数を作成
     public void PushButton()
@@ -33,10 +37,26 @@ public class ClickManager : MonoBehaviour
 
         //増えた数字をテキストで表示
         countText.text = "Score:" + count;
+
+        //キャラ表示
+        //1/25で15体発生
+        if(GenerateRandom(25)){
+            for(int i = 0; i<15; i++)
+            {
+                GenerateSlime();
+                count++;
+            }
+        }
+        GenerateSlime();
+
     }
 
 
-
+    private void Start()
+    {
+        GameObject prefab = (GameObject)Instantiate(slimePrefab);
+        prefab.transform.SetParent(canvas.transform, false);
+    }
 
     // Update is called once per frame
     void Update()
@@ -55,6 +75,13 @@ public class ClickManager : MonoBehaviour
 
                 //gameEndをtrueへ変更
                 gameEnd = true;
+
+
+                /*GameObject[] tagobjs = GameObject.FindGameObjectsWithTag("slime");
+                foreach (GameObject obj in tagobjs)
+                {
+                    Destroy(obj);
+                }*/
             }
             else
             {
@@ -72,5 +99,53 @@ public class ClickManager : MonoBehaviour
     public void ChangeScene()
     {
         SceneManager.LoadScene("TitleScene");
+    }
+
+    void GenerateSlime()
+    {
+        setPosition();
+        GameObject obj = (GameObject)Resources.Load("slime");
+        GameObject slime = Instantiate(obj, new Vector3(posX, posY, 1.0f), Quaternion.identity);
+        slime.transform.SetParent(canvas.transform);
+        if (GenerateRandom(15))
+        {
+            slime.transform.localScale = new Vector3(60, 60, 0);
+
+        }
+        else
+        {
+            slime.transform.localScale = new Vector3(20, 20, 0);
+
+        }
+    }
+
+    void setPosition()
+    {
+        posX = GenerateRandom(100, 900);
+        posY = GenerateRandom(100, 1700);
+    }
+
+    int GenerateRandom(int min, int max)
+    {
+        System.Random rand = new System.Random();
+        int r = rand.Next(min, max);
+        return (int)(float)r;
+    }
+
+    /**
+     * percent分の1でtrueを返す
+     */
+    bool GenerateRandom(int percent)
+    {
+        System.Random rand = new System.Random();
+        int r = rand.Next(percent);
+        if (r == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
